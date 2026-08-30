@@ -1,0 +1,6 @@
+aws_region      = "us-east-1"
+env             = "prod"
+domain_name     = "finance.example.com"
+route53_zone_id = "Z0123456789ABCDEFGHIJ"
+db_password     = "please-change-me-random-32chars"
+# container_image = ""  # оставить пустым для первого apply; после первого push через GH Actions пропишется автоматически через параметр
