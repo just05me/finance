@@ -3,13 +3,6 @@ const usdFormatter = new Intl.NumberFormat("ru-RU", {
   maximumFractionDigits: 2,
 });
 
-const usdFormatterCompact = new Intl.NumberFormat("ru-RU", {
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-  notation: "compact",
-  compactDisplay: "short",
-});
-
 const uzsFormatter = new Intl.NumberFormat("ru-RU", {
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
@@ -25,23 +18,12 @@ export function formatUsd(value: number): string {
   return `${sign}$${usdFormatter.format(Math.abs(value))}`;
 }
 
-export function formatUsdCompact(value: number): string {
-  const sign = value < 0 ? "−" : "";
-  return `${sign}$${usdFormatterCompact.format(Math.abs(value))}`;
-}
-
 export function formatUzs(value: number): string {
   return `${uzsFormatter.format(Math.round(value))} сум`;
 }
 
 export function formatPercent(value: number): string {
   return `${percentFormatter.format(value)}%`;
-}
-
-export function formatDelta(value: number): string {
-  if (value === 0) return "0%";
-  const sign = value > 0 ? "+" : "−";
-  return `${sign}${percentFormatter.format(Math.abs(value))}%`;
 }
 
 export function usdEquivalent(

@@ -14,11 +14,11 @@ export const dynamic = "force-dynamic";
 
 export default async function AnalyticsPage(): Promise<React.ReactElement> {
   const session = await requireUser();
-  const [categories, incomeCategories, goals, datasets] = await Promise.all([
+  const [categories, goals, datasets, incomeCategories] = await Promise.all([
     listCategories(false),
-    listIncomeCategories(false),
     listGoals(),
     collectMonthDatasets(12),
+    listIncomeCategories(false),
   ]);
   const currentMonth = await getOrCreateCurrentMonth(session.userId);
   return (
@@ -31,7 +31,6 @@ export default async function AnalyticsPage(): Promise<React.ReactElement> {
       <AnalyticsView
         datasets={datasets}
         categories={categories}
-        incomeCategories={incomeCategories}
         goals={goals}
         currentRate={currentMonth.exchangeRate}
       />

@@ -8,7 +8,3 @@ export async function requireUser(): Promise<SessionPayload> {
   }
   return session;
 }
-
-export async function getOptionalUser(): Promise<SessionPayload | null> {
-  return readSessionFromCookies();
-}

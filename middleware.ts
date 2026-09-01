@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { verifySession } from "./src/lib/session";
+import { SESSION_COOKIE_NAME, verifySession } from "./src/lib/session";
 
 const PUBLIC_PATHS = new Set(["/login"]);
 const PUBLIC_API_PATHS = new Set(["/api/auth/login", "/api/auth/logout"]);
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
     return NextResponse.next();
   }
 
-  const token = request.cookies.get("finance_session")?.value;
+  const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const session = token ? await verifySession(token) : null;
 
   if (pathname === "/login") {

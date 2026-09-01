@@ -3,7 +3,6 @@ import type {
   DailyExpense,
   GoalContribution,
   Income,
-  IncomeCategory,
   Month,
   SavingsGoal,
 } from "@/db/schema";
@@ -65,12 +64,6 @@ export function aggregateMonth(
     goalsPlanUsd: goalsPlan,
     needToEarnUsd: need,
   };
-}
-
-export interface CategoryMonthCell {
-  categoryId: number;
-  monthLabel: string;
-  totalUsd: number;
 }
 
 export function categoryCohort(

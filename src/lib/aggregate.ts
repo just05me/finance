@@ -16,16 +16,6 @@ export interface CategoryTotal {
   totalUsd: number;
 }
 
-export interface DayTotal {
-  date: string;
-  totalUsd: number;
-}
-
-export interface OwnerTotal {
-  owner: string;
-  totalUsd: number;
-}
-
 export function totalExpensesUsd(
   expenses: DailyExpense[],
   rate: number,
@@ -39,17 +29,6 @@ export function totalExpensesUsd(
 export function totalIncomesUsd(incomes: Income[], rate: number): number {
   return incomes.reduce(
     (sum, i) => sum + usdEquivalent(i.amountUsd, i.amountUzs, rate),
-    0,
-  );
-}
-
-export function totalPlannedUsd(
-  payments: PlannedPayment[],
-  rate: number,
-): number {
-  return payments.reduce(
-    (sum, p) =>
-      sum + plannedUsdEquivalent(p.currency, p.planAmount, p.factAmount, rate),
     0,
   );
 }
@@ -149,34 +128,6 @@ export function incomesByCategory(
       };
     })
     .sort((a, b) => b.totalUsd - a.totalUsd);
-}
-
-export function expensesByOwner(
-  expenses: DailyExpense[],
-  rate: number,
-): OwnerTotal[] {
-  const totals = new Map<string, number>();
-  for (const e of expenses) {
-    const val = usdEquivalent(e.amountUsd, e.amountUzs, rate);
-    totals.set(e.owner, (totals.get(e.owner) ?? 0) + val);
-  }
-  return [...totals.entries()]
-    .map(([owner, totalUsd]) => ({ owner, totalUsd }))
-    .sort((a, b) => b.totalUsd - a.totalUsd);
-}
-
-export function dailyTotals(
-  expenses: DailyExpense[],
-  rate: number,
-): DayTotal[] {
-  const byDate = new Map<string, number>();
-  for (const e of expenses) {
-    const val = usdEquivalent(e.amountUsd, e.amountUzs, rate);
-    byDate.set(e.date, (byDate.get(e.date) ?? 0) + val);
-  }
-  return [...byDate.entries()]
-    .map(([date, totalUsd]) => ({ date, totalUsd }))
-    .sort((a, b) => a.date.localeCompare(b.date));
 }
 
 export interface MonthSummary {

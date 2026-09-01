@@ -25,11 +25,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatCard } from "@/components/ui/stat-card";
-import type {
-  Category,
-  IncomeCategory,
-  SavingsGoal,
-} from "@/db/schema";
+import type { Category, SavingsGoal } from "@/db/schema";
 import type { MonthDataset } from "@/lib/analytics";
 import {
   aggregateMonth,
@@ -41,18 +37,12 @@ import {
   weekdayBreakdown,
   type Insight,
 } from "@/lib/analytics";
-import {
-  formatUsd,
-  monthGenitive,
-  monthLabel,
-  shortMonthLabel,
-} from "@/lib/format";
+import { formatUsd, shortMonthLabel } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 interface Props {
   datasets: MonthDataset[];
   categories: Category[];
-  incomeCategories: IncomeCategory[];
   goals: SavingsGoal[];
   currentRate: number;
 }

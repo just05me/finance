@@ -162,15 +162,6 @@ export async function listGoals(): Promise<SavingsGoal[]> {
     .orderBy(asc(savingsGoals.sortOrder), asc(savingsGoals.id));
 }
 
-export async function listContributionsByGoal(
-  goalId: number,
-): Promise<GoalContribution[]> {
-  return db
-    .select()
-    .from(goalContributions)
-    .where(eq(goalContributions.goalId, goalId));
-}
-
 export async function listContributionsByMonth(
   monthId: number,
 ): Promise<GoalContribution[]> {
