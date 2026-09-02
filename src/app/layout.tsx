@@ -5,16 +5,21 @@ import { ToastProvider } from "@/components/toast-provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "Финансы",
-    template: "%s • Финансы",
+    default: "ffinance",
+    template: "%s • ffinance",
   },
   description: "Семейный учёт доходов, расходов и целей",
-  applicationName: "Финансы",
+  applicationName: "ffinance",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Финансы",
+    title: "ffinance",
   },
   formatDetection: { telephone: false },
   other: {
