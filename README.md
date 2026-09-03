@@ -144,8 +144,6 @@ docker exec -t finance-db pg_dump -U postgres finance > backup-$(date +%F).sql
 - **Уведомления**: web push для просроченных платежей и превышения дневного среднего.
 - **Passkey / биометрия** через WebAuthn.
 - **Экспорт данных** (CSV / PDF).
-- **AWS deployment**: инструкции/IaC для RDS + ECS Fargate + ALB + ACM +
-  Secrets Manager + CloudWatch.
 
 ## Известные ограничения
 
